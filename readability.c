@@ -4,14 +4,14 @@
 #include <ctype.h>
 #include <math.h>
 
-int main (int arvc, string args[])
+int main(int arvc, string args[])
 {
     int wordCount = 1;
     int letterCount = 0;
     int sentenceCount = 0;
     string sentence = get_string("Text: ");
     long length = strlen(sentence);
-    for (int i=0; i<length; i++)
+    for (int i = 0; i < length; i++)
     {
         if (isalpha(sentence[i]))
         {
@@ -24,7 +24,6 @@ int main (int arvc, string args[])
         if (sentence[i] == '!' || sentence[i] == '.' || sentence[i] == '?') 
         {
             sentenceCount++;    
-           // wordCount++;
         }
         
         
@@ -37,7 +36,7 @@ int main (int arvc, string args[])
     {
         printf("Grade %i\n", index);
     }
-    else if (index<1) 
+    else if (index < 1) 
     {
         printf("Before Grade 1\n");    
     }
