@@ -103,10 +103,6 @@ void print_winner(void)
         {
             printf("%s\n", candidates[i].name);
         }
-        else 
-        {
-            printf("%s\n", candidates[winner].name);
-        }
     }
     return;
 }
