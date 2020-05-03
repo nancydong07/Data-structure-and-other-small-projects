@@ -311,7 +311,7 @@ void lock_pairs(void)
                 for (int c =0; c < pair_count; c++)
                 {
                     if (pairs[j].loser == pairs[c].winner && locked[pairs[c].winner][pairs[i].winner]){
-                        locked[pairs[i].winner][pairs[i].loser]=false;
+                        locked[pairs[c].winner][pairs[i].winner]=false;
                         break;
                     }
                 }
