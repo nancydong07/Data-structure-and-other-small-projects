@@ -305,7 +305,7 @@ void lock_pairs(void)
         check[pairs[i].winner]++;
     
     
-        for (int j = 0; j < candidate_count; j++)
+        for (int j = 0; j < pair_count; j++)
         {
             if (pairs[i].loser == pairs[j].winner){
                 for (int c =0; c < pair_count; c++)
