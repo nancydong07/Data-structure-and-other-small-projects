@@ -304,9 +304,13 @@ void lock_pairs(void)
         check[pairs[i].winner]++;
         for (int j =0; j < candidate_count-1; j++)
         {
-            if (check[j] != check[j+1])
+            if (check[j] == check[j+1])
             {
-                loop = false;
+                loop = true;
+            }
+            else if (check[j] != check[j+1])
+            {
+                loop = false; 
                 break;
             }
         }
