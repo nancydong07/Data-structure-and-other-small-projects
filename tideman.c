@@ -308,7 +308,7 @@ void lock_pairs(void)
         for (int j = 0; j < candidate_count; j++)
         {
             if (pairs[i].loser == pairs[j].winner){
-                for (int c =0; c < candidate_count; c++)
+                for (int c =0; c < pair_count; c++)
                 {
                     if (pairs[j].loser == pairs[c].winner && locked[pairs[c].winner][pairs[i].winner]){
                         locked[pairs[i].winner][pairs[i].loser]=false;
