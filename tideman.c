@@ -312,6 +312,7 @@ void lock_pairs(void)
                 {
                     if (pairs[j].loser == pairs[c].winner && locked[pairs[c].winner][pairs[i].winner]){
                         locked[pairs[c].winner][pairs[i].winner]=false;
+                        check[pairs[i].winner]--;
                         break;
                     }
                 }
