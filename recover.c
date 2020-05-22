@@ -5,8 +5,13 @@
 int main(int argc, char *argv[])
 {
     typedef uint8_t BYTE;
+    if (argc != 2){
+        printf("Enter memory card name");
+        return 1; 
+    }
     BYTE* buffer = malloc(sizeof(BYTE) * 512);
     FILE *file = fopen(argv[1], "r");
+    //conditions 
     int i = 0; 
     int j = 4;  
     while (fread(buffer, 512, 1, file) >= 512)//fread(buffer, 512, 1, file) == 1
