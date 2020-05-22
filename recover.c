@@ -11,7 +11,10 @@ int main(int argc, char *argv[])
     }
     BYTE* buffer = malloc(sizeof(BYTE) * 512);
     FILE *file = fopen(argv[1], "r");
-    //conditions 
+    if (!file)
+    {
+        return 1;
+    }
     int i = 0; 
     int j = 4;  
     while (fread(buffer, 512, 1, file) >= 512)//fread(buffer, 512, 1, file) == 1
