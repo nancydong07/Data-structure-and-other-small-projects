@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     }
     int i = 0; 
     int j = 4;  
-    while (fread(buffer, 512, 1, file) >= 512)//fread(buffer, 512, 1, file) == 1
+    while (fread(buffer, 512, 1, file) == 1)//fread(buffer, 512, 1, file) == 1
     {
         fread(buffer, sizeof(BYTE), 512, file);
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
