@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
             sprintf(argv[1], "%03i.jpg", i);
             i++;
             FILE *img = fopen(argv[1], "w");
-            while (buffer[j] != 0xff && buffer[j + 1] != 0xd8 && buffer[j + 2] != 0xff && (buffer[j + 3] & 0xf0) != 0xe0) //not the beginning of the next jpeg file, keep writing to the current jpeg file
+            while (buffer[j] != 0xff || buffer[j + 1] != 0xd8 || buffer[j + 2] != 0xff || (buffer[j + 3] & 0xf0) != 0xe0) //not the beginning of the next jpeg file, keep writing to the current jpeg file
             {
                 fwrite(buffer, sizeof(BYTE), 512, img);  
                 j++;
