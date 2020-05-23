@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     }
     /*Malloc allocates memory at run time; it returns a pointer to the first block of memory allocated; the information stays until it is manually free 
       whereas in arrays, it is automically destroyed when the function that calls it is destroyed. Since arrays are stored in the stack, there may be less space available to. */
-    BYTE* buffer = malloc(sizeof(BYTE) * 512); // create buffer to store bytes read from card
+    BYTE *buffer = malloc(sizeof(BYTE) * 512); // create buffer to store bytes read from card
     FILE *file = fopen(argv[1], "r"); //open the file in read mode
     if (!file)
     {
