@@ -6,8 +6,10 @@
 #include <stdint.h>
 #include <strings.h>
 #include <string.h>
-#include <ctype.h> 
+#include <ctype.h>
 #include "dictionary.h"
+#include <math.h>
+
 
 // Represents a node in a hash table
 typedef struct node
@@ -18,7 +20,7 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = 70000;
+const unsigned int N = 11001;
 int count = 0;
 
 // Hash table
@@ -28,18 +30,37 @@ node *table[N];
 bool check(const char *word)
 {
     // TODO
-    int index = hash(word);
-    for (node *cursor = table[index]; cursor != NULL; cursor = cursor->next)
+    char word2[LENGTH +1];
+    int i = 0; 
+    for (; word[i] != '\0'; i++)
     {
-    //    printf("test word is %s\n", word);
-     //   printf("dictionary word is %s\n", cursor->word);
-        
-        if (strcasecmp(word, cursor->word) == 0)
+         word2[i] = (tolower(word[i]));
+    }
+    word2[i] = '\0';
+    int index = hash(word2);
+  //  printf("index of word is %i and test word is %s\n", index, word2);
+
+
+//    printf("leng is %lu \n", strlen(word2));
+    node *head = table[index];
+    if (head == NULL)
+    {
+        printf("FALSE\n");
+    }
+  
+    for (node *cursor = head; cursor != NULL; cursor = cursor->next)
+    {
+  //      printf("test word is %s\n", word2);
+  //      printf("dictionary word is %s\n", cursor->word);
+    //    printf("else is %s\n", word2);
+
+        if (strcasecmp(word2, cursor->word) == 0)
         {
-            return true; 
+            return true;
         }
     }
     
+
     return false;
 }
 
@@ -47,10 +68,10 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // TODO
-    int num = 0; 
-    for (int i = 0; word[i] != 0; i++)
+    int num = 0;
+    for (int i = 0; word[i]/4 != '\0'; i++)
     {
-        num += (tolower(word[i]) + tolower(word[strlen(word) - i - 1])) * (strlen(word));
+        num += (word[i] + sqrt(word[strlen(word) - i - 1])) * (strlen(word));
     }
     num = num % N;
     return num;
@@ -67,36 +88,36 @@ bool load(const char *dictionary)
     }
     char buffer[LENGTH + 1];
     node *n;
-    int index = 0; 
-    //fscanf(file, "%s", buffer);
-    //n = malloc(sizeof(node));
-    //strcpy(n->word, buffer);
-    //n->NULL;
-    node *head; 
-    node *temp = NULL;
-    while (fscanf(file, "%s", buffer) != EOF) //read string from the file and putting it into the word array  
+    int index = 0;
+    while (fscanf(file, "%s", buffer) != EOF) //read string from the file and putting it into the word array
     {
         n = malloc(sizeof(node));
         strcpy(n->word, buffer); // copy the word to the node n's word field
         index = hash(n->word);
-        n->next = NULL; 
-    //    head->next = n;  
+
+        n->next = NULL;
         if (table[index] == NULL)
         {
-            table[index] = n; 
-            head = n;
+            table[index] = n;
+            n->next = NULL;
             count++;
         }
-        else 
+        else
         {
-            n->next = head;
-            head = n; 
-            table[index] = head;
+            n->next = table[index];
+            table[index] = n;
             count++;
         }
-        
+
     }
-    fclose(file);
+ /* for (int j = 0; j < N; j++)
+    {
+        for (node *cursor = table[j]; cursor!=NULL; cursor = cursor->next)
+        {
+            printf("[%i] --> %s", j, cursor->word);
+        }
+        printf("\n");
+    }  */  fclose(file);
     return true;
 }
 
@@ -118,7 +139,7 @@ bool unload(void)
     {
         for (cursor = table[i]; cursor != NULL; )
         {
-            temp = cursor; 
+            temp = cursor;
             cursor = cursor->next;
             free(temp);
         }
