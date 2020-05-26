@@ -43,16 +43,9 @@ bool check(const char *word)
 
 //    printf("leng is %lu \n", strlen(word2));
     node *head = table[index];
-    if (head == NULL)
-    {
-        printf("FALSE\n");
-    }
-  
+
     for (node *cursor = head; cursor != NULL; cursor = cursor->next)
     {
-  //      printf("test word is %s\n", word2);
-  //      printf("dictionary word is %s\n", cursor->word);
-    //    printf("else is %s\n", word2);
 
         if (strcasecmp(word2, cursor->word) == 0)
         {
