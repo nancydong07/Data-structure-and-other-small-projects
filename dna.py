@@ -58,6 +58,7 @@ for c in code:
 
 check = True
 for i in data:
+    check = True
     for k,v in i.items():
         if(k != "name"):
             if(not v in myDict.values()):
@@ -65,6 +66,9 @@ for i in data:
                 break
     if(check):
         print(i['name'])
-    check = True
+        break
+
+if(not check):
+    print("No match")
                 
 
