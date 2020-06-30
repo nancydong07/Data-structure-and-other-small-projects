@@ -9,7 +9,7 @@ if len(argv) != 2:
     exit(0)
 
 data = db.execute("SELECT first, middle, last, birth FROM students WHERE house =? ORDER BY last, first", argv[1])
-
+ll = []
 for rows in data:
     for i,u in rows.items():
         ll.append(rows[i])
