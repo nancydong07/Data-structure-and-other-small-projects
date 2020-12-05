@@ -175,46 +175,6 @@ void add_pairs(void)
            return;
 
      }
-  /*   for(int i = 0; i < candidate_count-1; i++)
-     {
-        if (preferences[0][i+1] > preferences[i+1][0])
-        {
-            pairs[i].winner = 0;
-            pairs[i].loser = i+1;
-        }
-            else if (preferences[0][i + 1] < preferences[i + 1][0])
-            {
-                pairs[i].winner = i+1;
-                pairs[i].loser = 0;
-            }
-            pair_count++;
-     }*/
-
-   /* for(int i = 0; i < 2; i++)
-    {
-        for (int j = i; j < 3; j++)
-        {
-            if (preferences[i][j] > preferences[j][i])
-            {
-                pairs[i].winner = i;
-                pairs[i].loser = j;
-            }
-            else if (preferences[i][j + 1] < preferences[j + 1][i])
-            {
-                pairs[i].winner = j;
-                pairs[i].loser = i;
-            }
-            pair_count++;
-            if (preferences[i][j] == preferences[j][i])
-            {
-                pair_count--;
-            }
-
-        }
-        printf("pair's winner is %i", pairs[i].winner);
-
-    }*/
-
 
 
 void swap(store *a, store *b)
@@ -245,51 +205,7 @@ void sort_pairs(void)
             }
         }
     }
- /*   store numOfWins[pair_count];
-    int index =0;
-    int test =0; 
-    for (int i = 0; i < pair_count; i++)
-    {
-        index=pairs[i].winner;
-        printf("index is %i\n", index);
-        numOfWins[index].wins+=1;
-        numOfWins[i].candidateNum=i;
-        
-        printf("num of wins: %i\n", numOfWins[i].wins);
-    }
-    for (int i = 0; i < pair_count; i++)
-    {
-        for (int j = 0; j < pair_count-i-1; j++)
-        {
-            if (numOfWins[j].wins < numOfWins[j + 1].wins)
-            {
-                printf("candidate number: %i \n candidate wins: %i", numOfWins[j].candidateNum, numOfWins[j].wins);
-                swap(&numOfWins[j], &numOfWins[j+1]);
-                printf("candidate number: %i \n candidate wins: %i", numOfWins[j].candidateNum, numOfWins[j].wins);
-            }
-        }
-    }
-    for (int i = 0; i < pair_count; i++)
-    {
-        pairs[i].winner=numOfWins[i].candidateNum;
-    }*/
-
-/*    for (int i = 0; i < pair_count; i++)
-    {
-        j=i;
-        if (numOfWins[i].candidateNum != pairs[i].winner)
-        {
-            while (pairs[j].winner != numOfWins[i].candidateNum && j<pair_count)
-            {
-                j++;
-            }
-            swap2(&pairs[i], &pairs[j]);
-        }
-        if (numOfWins[i].wins==0){
-            pairs[i].winner=pairs[i].loser;
-        }
-    }*/
-
+ 
     return;
 }
 
@@ -318,43 +234,7 @@ void lock_pairs(void)
                 }
             }}
                 
-        /*    if (pairs[i].winner == pairs[j].loser)
-            {
-                k = 0;
-                while (pairs[j].winner != pairs[k].loser)
-                {
-                    k++;
-                    if (k > pair_count)
-                    {
-                        break;
-                    }
-                }
-                if (locked[pairs[j].winner][pairs[j].loser]==true && locked[pairs[k].winner][pairs[k].loser] == true && locked[pairs[i].winner][pairs[k].winner]==true)
-                {
-                    locked[pairs[i].winner][pairs[i].loser] = false;
-                }
-                
-            }
-        }*/
-       /* for (int j =0; j < candidate_count-1; j++)
-        {
-            if (check[j] == check[j+1])
-            {
-                loop = true;
-            }
-            else if (check[j] != check[j+1])
-            {
-                loop = false; 
-                break;
-            }
-        }
-        if (loop)
-        {
-            locked[pairs[i].winner][pairs[i].loser]=false;
-        }*/
-    }
-    return;
-}
+       
 
 // Print the winner of the election
 void print_winner(void)
@@ -374,11 +254,7 @@ void print_winner(void)
         }
     }
     printf("%s", candidates[max]);
-/* printf("pair count is %i\n", pair_count);
-    for (int i=0; i< pair_count; i++){
-        printf("%i\n", pairs[i].winner);
-    }*/
-  //  printf("%s", candidates[pairs[0].winner]);
+
     return;
 }
 
